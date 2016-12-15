@@ -1,2 +1,2 @@
 # local-ip
-Get Local IP with RTC protocol
+Get Local Network IP with RTC protocol
