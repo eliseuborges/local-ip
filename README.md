@@ -1,2 +1,2 @@
 # local-ip
-Get Adapter Ethernet IP - Network Local with RTC protocol
+Get Adapter Ethernet IP - Network Local with RTCP protocol
