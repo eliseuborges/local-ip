@@ -4,7 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
-            const ip = await new Promise((s,f,c=new RTCPeerConnection(),k='candidate')=>(c.createDataChannel(''),c.createOffer(o=>c.setLocalDescription(o),f),c.onicecandidate=i=>i&&i[k]&&i[k][k]&&c.close(s(i[k][k].split(' ')[4]))))
+            const ip = await new Promise((resolve, reject) => {
+              const conn = new RTCPeerConnection()
+              conn.createDataChannel('')
+              conn.createOffer(offer => conn.setLocalDescription(offer), reject)
+              conn.onicecandidate = ice => {
+                if (ice && ice.candidate && ice.candidate.candidate) {
+                  resolve(i.candidate.candidate.split(' ')[4])
+                  conn.close()
+                }
+              }
+            })
             document.write(`Local IP: ${ip}`);
         </script>
     </head>
